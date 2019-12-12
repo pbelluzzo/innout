@@ -36,6 +36,12 @@ class Model{
         }
         return $objects;
     }
+    public static function getOne($filters = [], $columns = '*') {
+        $class = get_called_class();
+        $result = static::getSelect($filters, $columns);
+
+        return $result ? new $class($result->fetch_assoc()) : null;
+    }
 
 // Existem casos não cobertos pela montagem da query feita no método getSelect,
 // nestes casos deve-se passar a query diretamente para o getResultSetFromSelect
