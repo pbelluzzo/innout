@@ -22,13 +22,13 @@ class Database {
 
     }
 
-    private function getEnvIni(){
+    private static function getEnvIni(){
         $envpath = realpath(dirname(__FILE__) . '/../env.ini');
         $env = parse_ini_file($envpath);
         return $env;
     }
 
-    private function checkConnectionError($conn) {
+    private static function checkConnectionError($conn) {
         if($conn->connect_error){
             die("Erro: " . $conn->connect_error);
         }
