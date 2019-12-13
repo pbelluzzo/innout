@@ -18,7 +18,7 @@ class Model{
     }
 
     public function __get($key){
-        return $this->values($key);
+        return $this->values[$key];
     }
 
     public function __set($key, $value){
@@ -47,12 +47,11 @@ class Model{
 // nestes casos deve-se passar a query diretamente para o getResultSetFromSelect
 
     public static function getSelect($filters = [],$columns = '*') {
-        $sql = ('SELECT ' . 
-                static::$columns .
-                ' FROM ' .
-                static::$tableName .
-                static::getFilters($filters));
-        static::getResultSetFromSelect($sql);
+        $sql = ("SELECT ${columns} FROM " .
+            static::$tableName . 
+            static::getFilters($filters));
+        $result = static::getResultSetFromSelect($sql);
+        return $result;
     }
 
     public static function getResultSetFromSelect($sql){
@@ -60,7 +59,7 @@ class Model{
         if($result->num_rows === 0) {
             return null;
         }
-        return $result;
+        return $result;      
     }
 
 
@@ -68,7 +67,7 @@ class Model{
         $sql = '';
         if (count($filters) > 0){
             $sql .= " WHERE 1 = 1";
-            foreach($filters as $colum => $value){
+            foreach($filters as $column => $value){
             $sql .= " AND ${column} = " . static::getFormatedValue($value);
             }
         }

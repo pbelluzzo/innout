@@ -22,10 +22,11 @@
                 <i class="icofont-runner-alt-1 ml-2"></i>
             </div>
             <div class="card-body">
+                <?php require(VIEW_PATH . '/template/messages.php') ?>
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control"
-                    value="<?php $email ?>placeholder="Informe o E-mail" autofocus>
+                    value="<?php $email ?>" placeholder="Informe o E-mail" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="password">Senha</label>
