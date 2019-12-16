@@ -43,9 +43,6 @@ class Model{
         return $result ? new $class($result->fetch_assoc()) : null;
     }
 
-// Existem casos não cobertos pela montagem da query feita no método getSelect,
-// nestes casos deve-se passar a query diretamente para o getResultSetFromSelect
-
     public static function getSelect($filters = [],$columns = '*') {
         $sql = ("SELECT ${columns} FROM " .
             static::$tableName . 

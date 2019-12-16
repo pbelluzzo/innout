@@ -3,11 +3,27 @@ loadModel('User');
 
 class Login extends Model{
 
+    public function validate(){
+        $errors = [];
+
+        if(!$this->email){
+            $errors['email'] = 'Informe o e-mail';
+        }
+        if(!$this->password){
+            $errors['password'] = 'Informe a senha';
+        }
+        if(count($errors) > 0){
+            throw new ValidationException($errors);
+        }
+    }
+
     public function checkLogin(){
+        $this->validate();
         $user = User::getOne(['email' => $this->email] );
-        if ($user){
-            $this->checkPassword($user);
-            $this->checkEndDate($user);
+        if($this->checkEndDate($user)){
+            throw new AppException("Colaborador inativo");
+        }
+        if($this->checkPassword($user)){
             return $user;
         }
         throw new AppException('Usuário/senha inválidos!');
@@ -15,15 +31,13 @@ class Login extends Model{
 
     private function checkPassword($user){
         if(password_verify($this->password, $user->password)){
-            return $user;
+            return true;
         }
-        throw new AppException('Usuário/senha inválidos!');
-
     }
 
     private function checkEndDate($user){
         if($user->end_date) {
-            throw new AppException('Usuário desligado da empresa');
+            return true;
         }
     }
 
