@@ -26,10 +26,9 @@
         <div class="spacer"></div>
         <div class="dropdown">
             <div class="dropdown-button">
-                <span>Usuário</span>
-                <i class="icofont-simple-down ml-2"></i>
-            </div>
-            <div class="dropdown-content">
+                <span class="mx-2">Usuário</span>
+                <i class="icofont-simple-down mx-2"></i>
+                <div class="dropdown-content">
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a href="logout.php">
@@ -38,5 +37,6 @@
                     </li>
                 </ul>
             </div>
+            </div>          
         </div>
     </header>

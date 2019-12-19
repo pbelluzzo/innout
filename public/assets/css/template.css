@@ -46,18 +46,177 @@ header.header .menu-toggle{
     cursor:pointer;
 }
 
+header.header .spacer{
+    flex-grow:1;
+}
+
+header.header .dropdown{
+    position: relative;
+}
+
+header.header .dropdown-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.1rem;
+    color:white;
+    cursor:pointer;
+}
+
+header.header .dropdown-content {
+    display:none;
+    position: absolute;
+    min-width: 100%;
+    background-color: #f9f9f9;
+    padding: 15px 0px;
+    margin-top: 40px;
+    z-index:100;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
+
+}
+
+header.header .dropdown:hover .dropdown-content{
+    display:block;
+}
+
+
+header.header .dropdown-content ul {
+    list-style:none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+header.header .dropdown-content a {
+    text-decoration:none;
+    color: #222;
+}
+
+header.header .dropdown-content :hover {
+/*background-color: rgba(0,0,0,0.05);*/
+}
+
+header.header .dropdown :hover {
+    /*background-color: rgba(0,0,0,0.1);*/
+    }
+    
+
 aside.sidebar {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: -5px 0px 25px 1px rgba(0,0,0,0.4);
+    background-color: #fff;
     grid-area:sidebar;
+}
+
+aside.sidebar .menu {
+    width:100%;
+    flex-grow:1;
+}
+
+aside.sidebar .menu ul.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside.sidebar .menu li.nav-item {
+    padding:10px 0px 10px 25px;
+    margin: 0;
+}
+
+aside.sidebar .menu li.nav-item:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+aside.sidebar .menu li.nav-item a {
+    font-size: 1.2rem;
+    color: #555;
+    text-decoration: none;
 }
 
 body.hide-sidebar aside.sidebar {
     display: none;
 }
 
+aside.sidebar .sidebar-widgets {
+    position: sticky;
+    bottom: 10px;
+}
+
+aside.sidebar .sidebar-widget {
+    display:flex;
+    align-items: center;
+}
+
+aside.sidebar .sidebar-widget .info {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.division {
+    widows: 80%;
+    border: solid 1px #555;
+}
+
+aside.sidebar .icon {
+    font-size: 3.5rem;
+    margin: 2px 10px 2px 0px;
+}
+
+aside.sidebar .info .main {
+    font-size: 2rem;
+}
+
+.content .card-body {
+    font-size: 2.4rem;
+}
+
 main.content{
+    background-color: #FFF;
     grid-area:content;
+    margin:20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,.2);
+}
+
+main.content .content-title {
+    display:flex;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #CCC;
+}
+
+main.content .content-title .icon {
+    font-size: 3rem;
+    color: #555;
+}
+
+main.content .content-title h1 {
+    color: #444;
+    font-size: 1.8rem;
+    margin: 0px;
+    font-weight:300
+}
+
+main.content .content-title h2 {
+    color: #888;
+    font-size: 1.2rem;
+    margin: 0px;
+    font-weight:300
 }
 
 footer.footer {
+    display: flex;
+    background-color: #222;
+    color: #FFF;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    font-size: 1.2rem;
     grid-area:footer;
 }
